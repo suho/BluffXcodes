@@ -1,21 +1,18 @@
-class XcodeSelection {
-    
-    private var xcode: Xcode?
-    
-    func perform() {
-        do {
-            try step(title: "Loading Xcode applications for selection") {
-                let xcodes = Xcode.find().sorted(by: { $0.version < $1.version })
-                if xcodes.isEmpty || xcodes.count < 1 {
-                    write("Required at least 2 Xcodes into your system", style: .error)
-                    return
-                }
-                xcode = picker(
-                    title: "Select the old Xcode you want to use!",
-                    options: xcodes
-                )
-                write("Selected Xcode: \(xcode!.version)", style: .success)
+struct XcodeSelection {
+
+    static func perform() throws -> (selected: Xcode, latest: Xcode) {
+        return try step(title: "Loading Xcode applications...") {
+            let xcodes = Xcode.find().sorted(by: { $0.shortVersion < $1.shortVersion })
+            if xcodes.isEmpty || xcodes.count < 1 {
+                write("Required at least 2 Xcodes into your system", style: .error)
+                throw Error.notFound
             }
-        } catch {}
+            let selected = picker(
+                title: "Select the old Xcode you want to use!",
+                options: xcodes
+            )
+            write("Selected Xcode: \(selected.shortVersion)", style: .success)
+            return (selected, xcodes.last!)
+        }
     }
 }
