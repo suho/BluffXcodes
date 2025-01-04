@@ -1,6 +1,6 @@
 # BluffXcodes
 
-A command line tool to help developers work with multiple Xcode versions by creating symbolic links that "bluff" the system about which Xcode version is being used. This is particularly useful when you need to use an older Xcode version while maintaining compatibility with newer macOS requirements.
+A command line tool to help developers work with multiple Xcode versions by tmporarily modifying the bundle version of Xcode that "bluff" the system about which Xcode version is being used. This is particularly useful when you need to use an older Xcode version while maintaining compatibility with newer macOS requirements.
 
 ## Prerequisites
 
@@ -37,7 +37,8 @@ swift build -c release
 cp -f .build/release/bluffxcodes /usr/local/bin/bluffxcodes
 ```
 
-3. Usage
+## Usage
+
 Simply run the command in your terminal:
 
 ```bash
@@ -46,18 +47,15 @@ bluffxcodes
 
 The tool will automatically:
 
-1. Detect your installed Xcode versions
-2. Create necessary symbolic links to enable compatibility
-3. Display the results of the operation
+1. Detect your installed Xcode versions.
+2. Update the bundle version to enable compatibility for the selected Xcode.
+3. Display the results of the operation and open the selected Xcode version.
+
+From this point on, you can use the selected Xcode as normal (e.g., open it from the dock, Spotlight, etc.).
 
 ## Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
 
-1. Fork the repository
-2. Create your feature branch (git checkout -b feature/AmazingFeature)
-3. Commit your changes (git commit -m 'Add some AmazingFeature')
-4. Push to the branch (git push origin feature/AmazingFeature)
-5. Open a Pull Request
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Credits
 - Inspired by discussions in the [iOS Developers Slack](https://ios-developers.slack.com/) community.
