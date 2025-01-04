@@ -2,6 +2,12 @@
 
 A command line tool to help developers work with multiple Xcode versions by temporarily modifying the bundle version of Xcode that "bluff" the system about which Xcode version is being used. This is particularly useful when you need to use an older Xcode version while maintaining compatibility with newer macOS requirements.
 
+<p align="center">
+    <picture>
+      <img alt="Warp Example" src="./images/warp.png">
+    </picture>
+</p>
+
 ## Prerequisites
 
 - macOS Sonoma (14.0) or later
@@ -16,7 +22,7 @@ To grant **Full Disk Access**:
 
 ## Installation
 
-### Using Mint
+### Using Mint (Recommended)
 
 ```bash
 mint install suho/bluffxcodes
