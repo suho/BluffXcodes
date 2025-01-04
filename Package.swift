@@ -3,14 +3,14 @@
 import PackageDescription
 
 let package = Package(
-  name: "bluff-xcodes",
+  name: "BluffXcodes",
   platforms: [
     .macOS(.v13)
   ],
   products: [
     .executable(
-      name: "bluff-xcodes",
-      targets: ["bluff-xcodes"]
+      name: "bluffxcodes",
+      targets: ["bluffxcodes"]
     )
   ],
   dependencies: [
@@ -21,7 +21,7 @@ let package = Package(
   ],
   targets: [
     .executableTarget(
-      name: "bluff-xcodes",
+      name: "bluffxcodes",
       dependencies: [
         .product(name: "ArgumentParser", package: "swift-argument-parser"),
         "Version",
