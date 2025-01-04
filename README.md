@@ -1,13 +1,13 @@
 # BluffXcodes
 
-A command line tool to help developers work with multiple Xcode versions by tmporarily modifying the bundle version of Xcode that "bluff" the system about which Xcode version is being used. This is particularly useful when you need to use an older Xcode version while maintaining compatibility with newer macOS requirements.
+A command line tool to help developers work with multiple Xcode versions by temporarily modifying the bundle version of Xcode that "bluff" the system about which Xcode version is being used. This is particularly useful when you need to use an older Xcode version while maintaining compatibility with newer macOS requirements.
 
 ## Prerequisites
 
 - macOS Sonoma (14.0) or later
 - At least 2 Xcode versions installed
   - One must be compatible with macOS Sonoma
-- `Full Disk Access` permission granted to your terminal application (Terminal, iTerm2, Warp, etc.)
+- Full Disk Access permission granted to your terminal application (Terminal, iTerm2, Warp, etc.)
 
 To grant **Full Disk Access**:
 1. Open **System Settings**.
@@ -59,7 +59,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Credits
 - Inspired by discussions in the [iOS Developers Slack](https://ios-developers.slack.com/) community.
-- Special thanks to @aaronpearce for the original idea.
+- Special thanks to [@aaronpearce](https://github.com/aaronpearce) for the original idea.
 
 ## License
 
