@@ -4,7 +4,7 @@ A command line tool to help developers work with multiple Xcode versions by temp
 
 <p align="center">
     <picture>
-      <img alt="Warp Example" src="./images/warp.png">
+      <img alt="Warp Example" src="./Resources/warp.png">
     </picture>
 </p>
 
