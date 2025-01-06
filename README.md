@@ -10,10 +10,10 @@ A command line tool to help developers work with multiple Xcode versions by temp
 
 ## Prerequisites
 
-- macOS Sonoma (14.0) or later
-- At least 2 Xcode versions installed
-  - One must be compatible with macOS Sonoma
-- Full Disk Access permission granted to your terminal application (Terminal, iTerm2, Warp, etc.)
+- macOS Sonoma (14.0) or later.
+- At least 2 Xcode versions installed.
+  - One must be compatible with your current macOS version.
+- Full Disk Access permission granted to your terminal application (Terminal, iTerm2, Warp, etc.).
 
 To grant **Full Disk Access**:
 1. Open **System Settings**.
