@@ -35,13 +35,13 @@ extension Xcode {
                 if shortVersion.split(separator: ".").count == 2 {
                     shortVersion += ".0"
                 }
-                if let version = Version(shortVersion),
-                   let path = URL(string: fullPath),
-                   let url = URL(string: "file://\(path.absoluteString)/"),
-                   url.startAccessingSecurityScopedResource() {
-                    xcodeApps.append(
-                        .init(appName: filePath, shortVersion: version, bundleVersion: bundleVersion, url: url)
-                    )
+                if let version = Version(shortVersion) {
+                    let url = URL(fileURLWithPath: fullPath)
+                    if url.startAccessingSecurityScopedResource() {
+                        xcodeApps.append(
+                            .init(appName: filePath, shortVersion: version, bundleVersion: bundleVersion, url: url)
+                        )
+                    }
                 }
             }
         }
