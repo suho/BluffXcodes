@@ -3,7 +3,7 @@ import AppKit
 
 struct XcodeBluff {
 
-    static func bluff(selectedXcode: Xcode, latestXcode: Xcode) throws {
+    private static func bluff(selectedXcode: Xcode, latestXcode: Xcode) throws {
         try step(title: "Bluffing Xcode applications...") {
             guard selectedXcode.url.startAccessingSecurityScopedResource(),
                   latestXcode.url.startAccessingSecurityScopedResource() else {
@@ -23,6 +23,24 @@ struct XcodeBluff {
 
             selectedXcode.url.stopAccessingSecurityScopedResource()
             latestXcode.url.stopAccessingSecurityScopedResource()
+        }
+    }
+
+    static func bluffAll(xcodes: [Xcode]) throws -> [Xcode] {
+        return try step(title: "Bluffing Xcode applications...") {
+            guard let latest = xcodes.last else { return [] }
+            var opened: [Xcode] = []
+            for xcode in xcodes.dropLast() {
+                do {
+                    try bluff(selectedXcode: xcode, latestXcode: latest)
+                    opened.append(xcode)
+                } catch {
+                    write("Failed to open \(xcode.shortVersion)", style: .warning)
+                }
+            }
+            let versions = opened.map { $0.shortVersion.description }.joined(separator: ", ")
+            write("Successfully opened: \(versions)", style: .success)
+            return opened
         }
     }
 

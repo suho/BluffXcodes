@@ -10,8 +10,8 @@ struct Bluffxcodes: ParsableCommand {
 
     mutating func run() {
         do {
-            let xcodes = try XcodeSelection.perform()
-            try XcodeBluff.bluff(selectedXcode: xcodes.selected, latestXcode: xcodes.latest)
+            let xcodes = try XcodeSelection.loadAll()
+            _ = try XcodeBluff.bluffAll(xcodes: xcodes)
         } catch {
             write(error.localizedDescription, style: .error)
         }

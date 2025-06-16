@@ -63,9 +63,9 @@ bluffxcodes
 
 The tool will automatically:
 
-1. Detect your installed Xcode versions.
-2. Update the bundle version to enable compatibility for the selected Xcode.
-3. Display the results of the operation and open the selected Xcode version.
+1. Detect your installed Xcode versions in the background.
+2. Update the bundle version for each older Xcode and attempt to open it.
+3. Display a list of Xcode versions that opened successfully.
 
 From this point on, you can use the selected Xcode as normal (e.g., open it from the dock, Spotlight, etc.).
 
