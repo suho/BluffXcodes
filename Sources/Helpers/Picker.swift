@@ -1,6 +1,6 @@
 import ANSITerminal
 
-protocol Titlable {
+protocol Titleable {
 
     var title: String { get }
 }
@@ -37,7 +37,7 @@ fileprivate class OptionState {
     }
 }
 
-func picker<T: Titlable>(title: String, options: [T]) -> T {
+func picker<T: Titleable>(title: String, options: [T]) -> T {
     cursorOff()
     write("◆".foreColor(81).bold)
     moveRight()

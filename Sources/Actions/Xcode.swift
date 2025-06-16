@@ -1,7 +1,7 @@
 import Foundation
 import Version
 
-struct Xcode: Titlable {
+struct Xcode: Titleable {
 
     let appName: String
     let shortVersion: Version
