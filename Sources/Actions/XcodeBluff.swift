@@ -5,7 +5,10 @@ struct XcodeBluff {
 
     static func bluff(selectedXcode: Xcode, latestXcode: Xcode) throws {
         try step(title: "Bluffing Xcode applications...") {
-            guard selectedXcode.url.startAccessingSecurityScopedResource() else { return }
+            guard selectedXcode.url.startAccessingSecurityScopedResource(),
+                  latestXcode.url.startAccessingSecurityScopedResource() else {
+                throw Error.custom("Could not access Xcode applications. Ensure the tool has Full Disk Access.")
+            }
 
             try update(bundleVersion: latestXcode.bundleVersion, to: selectedXcode.url)
 
