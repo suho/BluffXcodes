@@ -22,11 +22,19 @@ To grant **Full Disk Access**:
 
 ## Installation
 
-### Using Mint (Recommended)
+### Using [Mint](https://github.com/yonaskolb/Mint) (Recommended)
+If you do not have [Mint](https://github.com/yonaskolb/Mint) installed, use [Homebrew](https://brew.sh/) to install it:
+
+```bash
+brew install mint
+```
+
 
 ```bash
 mint install suho/bluffxcodes
 ```
+
+For more information, see the [Mint documentation](https://github.com/yonaskolb/Mint).
 
 ### From Source
 1. Clone the repository
