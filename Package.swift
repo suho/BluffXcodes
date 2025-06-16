@@ -28,6 +28,11 @@ let package = Package(
         "ANSITerminal"
       ],
       path: "Sources"
+    ),
+    .testTarget(
+      name: "BluffXcodesTests",
+      dependencies: ["bluffxcodes"],
+      path: "Tests"
     )
   ]
 )

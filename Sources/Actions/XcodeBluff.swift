@@ -1,6 +1,9 @@
 import Foundation
+#if canImport(AppKit)
 import AppKit
+#endif
 
+#if canImport(AppKit)
 struct XcodeBluff {
 
     static func bluff(selectedXcode: Xcode, latestXcode: Xcode) throws {
@@ -33,6 +36,7 @@ struct XcodeBluff {
         try data.write(to: infoPlistUrl)
     }
 }
+#endif
 
 extension Dictionary {
 

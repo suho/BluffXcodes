@@ -11,7 +11,9 @@ struct Bluffxcodes: ParsableCommand {
     mutating func run() {
         do {
             let xcodes = try XcodeSelection.perform()
+#if canImport(AppKit)
             try XcodeBluff.bluff(selectedXcode: xcodes.selected, latestXcode: xcodes.latest)
+#endif
         } catch {
             write(error.localizedDescription, style: .error)
         }
