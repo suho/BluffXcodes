@@ -38,6 +38,15 @@ mint install suho/bluffxcodes
 
 For more information, see the [Mint documentation](https://github.com/yonaskolb/Mint).
 
+### Using Homebrew
+
+If you prefer installing directly with Homebrew:
+
+```bash
+brew tap suho/bluffxcodes
+brew install bluffxcodes
+```
+
 ### From Source
 1. Clone the repository
 
