@@ -1,0 +1,60 @@
+name: Print Xcode Versions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  macos-15:
+    runs-on: macos-15
+    steps:
+      - name: Print CFBundleVersion
+        run: |
+          for app in \
+            /Applications/Xcode_16.app \
+            /Applications/Xcode_16.1.app \
+            /Applications/Xcode_16.2.app \
+            /Applications/Xcode_16.3.app \
+            /Applications/Xcode_16.4.app \
+            /Applications/Xcode_26_beta.app; do
+            if [ -f "$app/Contents/Info.plist" ]; then
+              version=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$app/Contents/Info.plist")
+              echo "$app: $version"
+            else
+              echo "$app: not found"
+            fi
+          done
+
+  macos-14:
+    runs-on: macos-14
+    steps:
+      - name: Print CFBundleVersion
+        run: |
+          for app in \
+            /Applications/Xcode_15.4.app \
+            /Applications/Xcode_15.3.app \
+            /Applications/Xcode_15.2.app \
+            /Applications/Xcode_15.1.app; do
+            if [ -f "$app/Contents/Info.plist" ]; then
+              version=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$app/Contents/Info.plist")
+              echo "$app: $version"
+            else
+              echo "$app: not found"
+            fi
+          done
+
+  macos-13:
+    runs-on: macos-13
+    steps:
+      - name: Print CFBundleVersion
+        run: |
+          for app in \
+            /Applications/Xcode_14.3.1.app \
+            /Applications/Xcode_14.2.app \
+            /Applications/Xcode_14.1.app; do
+            if [ -f "$app/Contents/Info.plist" ]; then
+              version=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$app/Contents/Info.plist")
+              echo "$app: $version"
+            else
+              echo "$app: not found"
+            fi
+          done
