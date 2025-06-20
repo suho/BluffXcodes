@@ -1,3 +1,5 @@
+import Dispatch
+
 struct XcodeSelection {
 
     static func loadAll() throws -> [Xcode] {
@@ -10,8 +12,8 @@ struct XcodeSelection {
                 group.leave()
             }
             group.wait()
-            if xcodes.count < 2 {
-                write("Required at least 2 Xcodes into your system", style: .error)
+            if xcodes.isEmpty {
+                write("Could not find any Xcode applications", style: .error)
                 throw Error.notFound
             }
             return xcodes

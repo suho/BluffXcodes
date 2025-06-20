@@ -1,16 +1,18 @@
 import Foundation
+#if canImport(AppKit)
 import AppKit
+#endif
 
 struct XcodeBluff {
 
-    private static func bluff(selectedXcode: Xcode, latestXcode: Xcode) throws {
+    private static func bluff(selectedXcode: Xcode, buildNumber: String) throws {
         try step(title: "Bluffing Xcode applications...") {
-            guard selectedXcode.url.startAccessingSecurityScopedResource(),
-                  latestXcode.url.startAccessingSecurityScopedResource() else {
+#if canImport(AppKit)
+            guard selectedXcode.url.startAccessingSecurityScopedResource() else {
                 throw Error.custom("Could not access Xcode applications. Ensure the tool has Full Disk Access.")
             }
 
-            try update(bundleVersion: latestXcode.bundleVersion, to: selectedXcode.url)
+            try update(bundleVersion: buildNumber, to: selectedXcode.url)
 
             NSWorkspace.shared.open(selectedXcode.url)
             DispatchQueue.global().asyncAfter(deadline: .now() + 10) {
@@ -22,17 +24,21 @@ struct XcodeBluff {
             try update(bundleVersion: selectedXcode.bundleVersion, to: selectedXcode.url)
 
             selectedXcode.url.stopAccessingSecurityScopedResource()
-            latestXcode.url.stopAccessingSecurityScopedResource()
+#endif
         }
     }
 
     static func bluffAll(xcodes: [Xcode]) throws -> [Xcode] {
         return try step(title: "Bluffing Xcode applications...") {
-            guard let latest = xcodes.last else { return [] }
+            guard let support = Constants.currentSupported else {
+                write("Unsupported macOS version", style: .error)
+                return []
+            }
+            let older = xcodes.filter { $0.shortVersion < support.version }
             var opened: [Xcode] = []
-            for xcode in xcodes.dropLast() {
+            for xcode in older {
                 do {
-                    try bluff(selectedXcode: xcode, latestXcode: latest)
+                    try bluff(selectedXcode: xcode, buildNumber: support.build)
                     opened.append(xcode)
                 } catch {
                     write("Failed to open \(xcode.shortVersion)", style: .warning)

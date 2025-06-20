@@ -37,11 +37,17 @@ extension Xcode {
                 }
                 if let version = Version(shortVersion) {
                     let url = URL(fileURLWithPath: fullPath)
+#if canImport(AppKit)
                     if url.startAccessingSecurityScopedResource() {
                         xcodeApps.append(
                             .init(appName: filePath, shortVersion: version, bundleVersion: bundleVersion, url: url)
                         )
                     }
+#else
+                    xcodeApps.append(
+                        .init(appName: filePath, shortVersion: version, bundleVersion: bundleVersion, url: url)
+                    )
+#endif
                 }
             }
         }
