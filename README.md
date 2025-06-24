@@ -13,8 +13,8 @@ This repository also demonstrates the usage of **OpenAI Codex** for automating u
 ## Prerequisites
 
 - macOS Sonoma (14.0) or later.
-- At least 2 Xcode versions installed.
-  - One must be compatible with your current macOS version.
+- One Xcode version installed.
+  - It can be older than the supported version for your macOS.
 - Full Disk Access permission granted to your terminal application (Terminal, iTerm2, Warp, etc.).
 
 To grant **Full Disk Access**:
@@ -73,7 +73,7 @@ bluffxcodes
 The tool will automatically:
 
 1. Detect your installed Xcode versions in the background.
-2. Update the bundle version for each older Xcode and attempt to open it.
+2. Update the bundle version for each older Xcode to match the supported build for your macOS and attempt to open it.
 3. Display a list of Xcode versions that opened successfully.
 
 From this point on, you can use the selected Xcode as normal (e.g., open it from the dock, Spotlight, etc.).
